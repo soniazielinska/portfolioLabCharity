@@ -90,21 +90,27 @@ c:forEach=""
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
 
-
-                <c:forEach items="${categories}" var="category">
-                    <div class="form-group form-group--checkbox">
-                        <label>
-                            <input
-                                    type="checkbox"
-                                    name="categories"
-                                    value="${category.id}"
-                            />
-                            <span class="checkbox"></span>
-                            <span class="description">${category.name}</span>
-                        </label>
-                    </div>
-                </c:forEach>
-
+<%--    <div class="form-group form-group--checkbox">--%>
+<%--        <form:checkboxes path="categories" items="${categoriesList}" itemLabel="name" itemValue="id"/>--%>
+<%--    </div>--%>
+<%--                <c:forEach items="${categoriesList}" var="category">--%>
+<%--                    <div class="form-group form-group--checkbox">--%>
+<%--                        <label>--%>
+            <form:checkboxes path="categories" items="${categoriesList}" itemValue="id" itemLabel="name"/>
+<%--                            <span class="checkbox"></span>--%>
+<%--                            <span class="description">${category.name}</span>--%>
+<%--                        </label>--%>
+<%--                    </div>--%>
+<%--                </c:forEach>--%>
+<%--                <div class="form-group form-group--checkbox">--%>
+<%--                    <label>--%>
+<%--                        <form:select path="categories" items="${categoriesList}" itemLabel="name" itemValue="id"/>--%>
+<%--                        <span class="checkbox"></span>--%>
+<%--                        <span class="description"--%>
+<%--                        >ubrania, które nadają się do ponownego użycia</span--%>
+<%--                        >--%>
+<%--                    </label>--%>
+<%--                </div>--%>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
@@ -133,10 +139,11 @@ c:forEach=""
             <div data-step="3">
                 <h3>Wybierz organizację, której chcesz pomóc:</h3>
 
-                <c:forEach items="${institutions}" var="institution">
+<%--            <form:radiobuttons path="institution" items="${institutionsList}" itemValue="id" itemLabel="name"/>--%>
+                <c:forEach items="${institutionsList}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="radio" name="institution" value="${institution.name}"/>
+                            <form:radiobutton path="institution" value="${institution}"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                                 <div class="title">
@@ -231,7 +238,7 @@ c:forEach=""
                 </div>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="submit" class="btn next-step">Dalej</button>
+                    <button type="button" class="btn next-step">Dalej</button>
                 </div>
             </div>
 
@@ -245,16 +252,12 @@ c:forEach=""
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >${donation.quantity} worki ubrań w dobrym stanie dla dzieci</span
-                                >
+                                <span class="summary--text" id="quantitySummary"></span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text"
-                                >Dla fundacji "${donation.institution.name}" w Warszawie</span
-                                >
+                                <span class="summary--text" id="institutionSummary"></span>
                             </li>
                         </ul>
                     </div>
@@ -262,20 +265,13 @@ c:forEach=""
                     <div class="form-section form-section--columns">
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
-                            <ul>
-                                <li>${donation.street}</li>
-                                <li>${donation.city}</li>
-                                <li>${donation.zipCode}</li>
-                                <li>${donation.phoneNumber}</li>
+                            <ul id="addressSummary">
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
-                            <ul>
-                                <li>${donation.pickUpDate}</li>
-                                <li>${donation.pickUpTime}</li>
-                                <li>${donation.pickUpComment}</li>
+                            <ul id="dateTimeSummary">
                             </ul>
                         </div>
                     </div>

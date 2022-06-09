@@ -1,10 +1,10 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.donation;
 
-import jdk.dynalink.linker.LinkerServices;
 import lombok.Data;
+import pl.coderslab.charity.institution.Institution;
+import pl.coderslab.charity.category.Category;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;

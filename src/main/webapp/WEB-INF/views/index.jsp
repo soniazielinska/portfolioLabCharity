@@ -109,22 +109,27 @@
         <ul class="help--slides-items">
             <c:forEach items="${institutions}" var="institution" varStatus="loop">
                 <li>
+                <c:if test="${loop.count % 2 == 0}">
+                    <div class="col">
+                    <div class="title">
+                        Fundacja "${institution.name}"
+                    </div>
+                    <div class="subtitle">
+                        Cel i misja: ${institution.description}
+                    </div>
+                    </div>
+                </c:if>
+
+                <c:if test="${loop.count % 2 != 0}">
                         <div class="col">
-                        <div class="title">
-                            Fundacja "${institution.name}"
+                            <div class="title">
+                                Fundacja "${institution.name}"
+                            </div>
+                            <div class="subtitle">
+                                Cel i misja: ${institution.description}
+                            </div>
                         </div>
-                        <div class="subtitle">
-                            Cel i misja: ${institution.description}
-                        </div>
-                        </div>
-                        <div class="col">
-                        <div class="title">
-                            Fundacja "${institution.name}"
-                        </div>
-                        <div class="subtitle">
-                            Cel i misja: ${institution.description}
-                        </div>
-                        </div>
+                </c:if>
                 </li>
             </c:forEach>
         </ul>

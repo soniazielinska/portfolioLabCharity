@@ -1,6 +1,7 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.institution;
 
 import org.springframework.stereotype.Repository;
+import pl.coderslab.charity.category.Category;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

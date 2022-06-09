@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+
   /**
    * Form Select
    */
@@ -65,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
   }
+
   document.querySelectorAll(".form-group--dropdown select").forEach(el => {
     new FormSelect(el);
   });
@@ -72,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
   /**
    * Hide elements when clicked on document
    */
-  document.addEventListener("click", function(e) {
+  document.addEventListener("click", function (e) {
     const target = e.target;
     const tagName = target.tagName;
 
@@ -164,11 +166,44 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+      let quantity = document.getElementById('quantity').value;
+      if (quantity > 1) {
+        document.getElementById('quantitySummary').innerText = 'Oddajesz ' + quantity + ' worki darów dla potrzebujących';
+      } else {
+        document.getElementById('quantitySummary').innerText = 'Oddajesz ' + quantity + ' worek darów dla potrzebujących';
+      }
+        let address = document.getElementById('addressSummary');
+      let street = document.getElementById('street').value;
+      let streetLi = document.createElement("li");
+      streetLi.innerText = street;
+      address.appendChild(streetLi);
+
+      let zipCode = document.getElementById('zipCode').value;
+      let city = document.getElementById('city').value;
+      let cityLi = document.createElement('li');
+      cityLi.innerText = zipCode + " " + city;
+      address.appendChild(cityLi);
+
+        let dateTimeSummary = document.getElementById('dateTimeSummary');
+      let date = document.getElementById('pickUpDate').value;
+      let time = document.getElementById('pickUpTime').value;
+      let dateLi = document.createElement('li');
+      let timeLi = document.createElement('li');
+      dateLi.innerText = date;
+      timeLi.innerText = time;
+      dateTimeSummary.appendChild(dateLi);
+      dateTimeSummary.appendChild(timeLi);
     }
 
   }
+
   const form = document.querySelector(".form--steps");
   if (form !== null) {
     new FormSteps(form);
   }
-});
+
+
+
+})
+
+

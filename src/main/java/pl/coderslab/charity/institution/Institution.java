@@ -1,4 +1,4 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.institution;
 
 import lombok.Data;
 
